@@ -1,0 +1,165 @@
+.cabecalho__menu-hamburguer {
+    width: 24px;
+    height: 24px;
+    background-image: url("../img/Menu.svg");
+    display: inline-block;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.container__botao:checked~.container__rotulo > .cabecalho__menu-hamburguer {
+    background-image: url("..//img/Menu\ Aberto.svg");
+}
+
+.container__botao:checked~.container__rotulo {
+    background: var(--azul-degrade);
+}
+
+.cabecalho {
+    background-color: var(--branco);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative; /*O position relative, ele libera a opção de você colocar outros atributos como top, left, right, bottom  */
+}
+
+.container {
+    display: flex;
+    align-items: center;
+}
+
+.container__imagem {
+    padding: 1em;
+}
+
+.lista-menu {
+    display: none;
+    position: absolute; /*o position absolute, permite que você movimente o seu elemento de acordo com outro que veio antes, ou que é o pai, que esteja a position diferente de static que é a padrão.  */
+    top: 100%;
+    width: 60vw;
+}
+
+.container__botao:checked~.lista-menu {  /*ele pega todo lista-menu que vem após o container__botao:checked*/
+    display: block;
+}
+
+.lista-menu__titulo, .lista-menu__item {
+    padding: 1em;
+    background-color: var(--branco);
+}
+
+.lista-menu__titulo {
+    color: var(--laranja);
+    font-weight: 700;
+}
+
+.lista-menu__link {
+    background: var(--azul-degrade);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-transform: uppercase;   /* letras maiusculas */
+}
+
+.container__botao {
+    display: none;  /* o CHECKBOX continua, mas ele nao aparece */
+}
+
+.container__titulo {
+    display: none;  /* antes de 1024px ela nao aparece */
+}
+
+.opcoes {
+    display: none;  
+}
+
+@media screen and (min-width: 1024px) {
+
+    .container__titulo, .container__titulo--negrito {
+        font-family: var(--fonte-secundario);
+        font-size: 30px;
+    }
+
+    .container__titulo {
+        font-weight: 400;
+        display: block;
+    }
+
+    .container__titulo--negrito {
+        font-weight: 700;
+    }
+
+    .opcoes {
+        display: flex;
+    }
+
+    .opcoes__item {
+        padding: 0 1em;
+        text-transform: uppercase;  /* letras maiusculas */
+    }
+
+    .opcoes__link {
+        text-decoration: none;
+        color: var(--preto);
+    }
+
+    .container__imagem-transparente {  /* quando passar de 1024 a imagem de favoritos desaparece*/
+        display: none;      
+    }
+
+    .cabecalho__menu-hamburguer {
+        display: none;
+    }
+
+    .opcoes__botao:checked~.lista-menu {
+        display: block;
+        width: auto;
+    }
+
+    .opcoes__botao {
+        display: none; /* pra tirar o botao */
+    }
+
+    .opcoes__botao:checked~.opcoes__rotulo>.opcoes__item {
+        background: var(--azul-degrade);
+        color: var(--branco);
+    }
+
+    .opcoes__item {
+        padding: 2em 1em;
+    }
+
+    .lista-menu__item:hover {
+        background: var(--azul-degrade);
+    }
+
+    .lista-menu__item:hover>.lista-menu__link {
+        -webkit-text-fill-color: var(--branco);
+        text-decoration: none;
+    }
+}
+
+.container__texto {
+    display: none;
+}
+
+@media screen and (min-width: 1728px) {
+    .container__link {
+        display: flex;
+        align-items: center;
+        text-decoration: none;
+        color: var(--preto);
+    }
+
+    .cabecalho {
+        padding: 0 2em;
+    }
+
+    .opcoes {
+        margin-right: auto;  /* ele empurra todos os elementos para esquerda, pois, ele preenche todo o espaço da direita com a margem */
+    }
+
+    .container__texto {
+        display: block;
+    }
+}
